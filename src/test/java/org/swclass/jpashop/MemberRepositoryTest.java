@@ -10,8 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import org.swclass.jpashop.domain.Member;
-import org.swclass.jpashop.repository.MemberRepository;
+import org.swclass.jpashop.domain.MemberTest;
 import org.swclass.jpashop.repository.MemberRepositoryInterface;
 
 import java.util.Optional;
@@ -32,7 +31,7 @@ public class MemberRepositoryTest {
     @Transactional
     @Rollback(false)
     public void testMember() {
-        Member member = new Member();
+        MemberTest member = new MemberTest();
         member.setUsername("wangi");
 
         memberRepository.save(member);

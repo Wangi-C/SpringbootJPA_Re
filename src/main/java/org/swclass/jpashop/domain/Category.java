@@ -2,6 +2,7 @@ package org.swclass.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.swclass.jpashop.domain.item.Item;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +11,14 @@ import javax.persistence.Id;
 import java.util.List;
 
 @Entity
-@Getter @Setter
-public class Member {
-
+@Getter
+@Setter
+public class Category {
     @Id @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "category_id")
     private Long id;
 
     private String name;
-    private Address address;
-    private List<Orders> orders;
+    private List<Item> items;
+    private Category parent;
 }

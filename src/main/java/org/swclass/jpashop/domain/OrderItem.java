@@ -2,22 +2,23 @@ package org.swclass.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.swclass.jpashop.domain.item.Item;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.List;
 
 @Entity
-@Getter @Setter
-public class Member {
-
+@Getter
+@Setter
+public class OrderItem {
     @Id @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "orderItem_id")
     private Long id;
 
-    private String name;
-    private Address address;
-    private List<Orders> orders;
+    private Item item;
+    private Orders order;
+    private int orderPrice;
+    private int cnt;
 }

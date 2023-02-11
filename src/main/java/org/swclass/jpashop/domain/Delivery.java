@@ -7,17 +7,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.List;
 
 @Entity
-@Getter @Setter
-public class Member {
+@Getter
+@Setter
+public class Delivery {
 
     @Id @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "delivery_id")
     private Long id;
 
-    private String name;
+    private Orders order;
     private Address address;
-    private List<Orders> orders;
+    private DeliveryStatus deliveryStatus;
 }
