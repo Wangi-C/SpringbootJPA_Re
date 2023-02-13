@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.swclass.jpashop.domain.item.Item;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,6 +16,9 @@ public class Category {
     private Long id;
 
     private String name;
+    @ManyToMany
     private List<Item> items;
+
+    @ManyToOne
     private Category parent;
 }
