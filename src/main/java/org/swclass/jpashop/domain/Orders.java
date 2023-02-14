@@ -30,4 +30,29 @@ public class Orders {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    //===연관관계 메소드===//
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
+
+//    public static void main(String[] args) {
+//        //비즈니스 로직에서
+//        Member member = new Member();
+//        Orders orders = new Orders();
+//
+//        member.getOrders().add(orders);
+//        orders.setMember(member);
+//    }
 }

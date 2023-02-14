@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.swclass.jpashop.domain.Category;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,5 +20,7 @@ public abstract class Item {
     private String name;
     private int price;
     private int stockQuatity;
-    private List<Category> categories;
+
+    @ManyToMany
+    private List<Category> categories = new ArrayList<>();
 }

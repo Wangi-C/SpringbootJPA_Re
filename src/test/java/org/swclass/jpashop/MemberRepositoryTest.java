@@ -1,6 +1,5 @@
 package org.swclass.jpashop;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -11,11 +10,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.swclass.jpashop.domain.MemberTest;
-import org.swclass.jpashop.repository.MemberRepositoryInterface;
-
-import java.util.Optional;
-
-import static org.assertj.core.api.Assertions.*;
+import org.swclass.jpashop.repository.MemberRepositoryTestInterface;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -23,8 +18,8 @@ public class MemberRepositoryTest {
     // 1. extands JpaRepository<Member,Long> 사용해보기
 
     @Autowired
-//    MemberRepository memberRepository;
-    MemberRepositoryInterface memberRepository;
+//    MemberRepositoryTest memberRepository;
+    MemberRepositoryTestInterface memberRepository;
 
     @Test
     @DisplayName("Member 엔티티 생성 후 저장, 조회")

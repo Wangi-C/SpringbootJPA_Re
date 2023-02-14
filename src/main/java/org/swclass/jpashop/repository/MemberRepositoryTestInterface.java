@@ -5,6 +5,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.swclass.jpashop.domain.MemberTest;
 
-public interface MemberRepositoryInterface extends JpaRepository<MemberTest, Long> {
+public interface MemberRepositoryTestInterface extends JpaRepository<MemberTest, Long> {
     Page<MemberTest> findById(Long id, Pageable pageable);
 }
