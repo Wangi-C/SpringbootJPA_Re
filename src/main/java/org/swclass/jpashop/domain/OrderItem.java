@@ -24,4 +24,25 @@ public class OrderItem {
     private Orders order;
     private int orderPrice;
     private int cnt;
+
+    //==생성 메소드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int cnt) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCnt(cnt);
+
+        item.removeStock(cnt);
+
+        return orderItem;
+    }
+
+    public void cancel() {
+        getItem().addStock(cnt);
+        //item.addStock(cnt)로 하면 안될까?
+    }
+
+    public int getTotalPrice() {
+        return getOrderPrice() * getCnt();
+    }
 }
