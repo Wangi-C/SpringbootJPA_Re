@@ -1,6 +1,8 @@
 package org.swclass.jpashop.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import org.swclass.jpashop.domain.*;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.swclass.jpashop.domain.QMember.member;
+import static org.swclass.jpashop.domain.QOrders.orders;
 
 @Repository
 public class OrderRepository {
@@ -98,13 +101,15 @@ public class OrderRepository {
 
     /**QueryDSL**/
     public List<Orders> findAllByQueryDSL(OrderSearch orderSearch) {
-        QOrders order = QOrders.orders;
+        JPAQueryFactory jpaQueryFactory = new JPAQueryFactory(em);
+
+        QOrders orders = QOrders.orders;
         QMember member = QMember.member;
 
-        return query
-                .select(order)
-                .from(order)
-                .join(order.member, member)
+        return jpaQueryFactory
+                .select(orders)
+                .from(orders)
+                .join(orders.member, member)
                 .where(statusEq(orderSearch.getOrderStatus()),
                         nameLike(orderSearch.getMemberName()))
                 .limit(100)
@@ -115,7 +120,8 @@ public class OrderRepository {
         if(statusCond == null) {
             return null;
         }
-        return orders.status.eq(statusCond);
+
+        return orders.orderStatus.eq(statusCond);
     }
 
     private BooleanExpression nameLike(String nameCond) {
