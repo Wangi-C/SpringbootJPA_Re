@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.swclass.jpashop.domain.Address;
 import org.swclass.jpashop.domain.Member;
+import org.swclass.jpashop.domain.form.MemberForm;
 import org.swclass.jpashop.repository.MemberRepository;
 import org.swclass.jpashop.repository.ShopMemberRepository;
 
@@ -22,6 +24,15 @@ public class MemberService {
         validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
+    }
+
+    @Transactional
+    public void editInfo(MemberForm memberForm) {
+        Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
+
+        Member member = memberRepository.findOne(memberForm.getMemberId());
+        member.setAddress(address);
+        member.setName(memberForm.getName());
     }
 
     private void validateDuplicateMember(Member member) {

@@ -9,6 +9,8 @@ import org.swclass.jpashop.repository.ItemRepository;
 import org.swclass.jpashop.repository.OrderRepository;
 import org.swclass.jpashop.repository.ShopMemberRepository;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -51,5 +53,10 @@ public class OrderService {
     /*
     * 주문 검색
     * */
+    @Transactional(readOnly = true)
+    public List<Orders> findAll(OrderSearch orderSearch) {
+        List<Orders> ordersList = orderRepository.findAllByQueryDSL(orderSearch);
 
+        return ordersList;
+    }
 }

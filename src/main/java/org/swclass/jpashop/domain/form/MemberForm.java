@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class MemberForm {
 
+    private Long memberId;
     private String name;
     private String city;
     private String street;

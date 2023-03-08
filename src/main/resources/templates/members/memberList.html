@@ -13,6 +13,7 @@
                 <th>도시</th>
                 <th>주소</th>
                 <th>우편번호</th>
+                <th>비고</th>
             </tr>
             </thead>
             <tbody>
@@ -22,6 +23,9 @@
                 <td th:text="${member.address?.city}"></td>
                 <td th:text="${member.address?.street}"></td>
                 <td th:text="${member.address?.zipcode}"></td>
+                <td>
+                    <a href="#" th:href="@{/member/{id}/edit (id=${member.id})}" class="btn btn-primary" role="button">정보 수정</a>
+                </td>
             </tr>
             </tbody>
         </table>
