@@ -18,7 +18,7 @@ public class Busket {
     @OneToOne(mappedBy = "busket", fetch = FetchType.LAZY)
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private List<Item> items = new ArrayList<>();
+    @OneToMany(mappedBy = "busket", fetch = FetchType.LAZY)
+    private List<BusketItem> busketItems = new ArrayList<>();
 
 }
