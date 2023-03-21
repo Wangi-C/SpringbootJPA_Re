@@ -23,7 +23,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Orders> orders = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "busket_id")
     private Busket busket;
 

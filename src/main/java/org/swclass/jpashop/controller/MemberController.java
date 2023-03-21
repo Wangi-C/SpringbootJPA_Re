@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.swclass.jpashop.domain.Address;
+import org.swclass.jpashop.domain.Busket;
 import org.swclass.jpashop.domain.Member;
 import org.swclass.jpashop.domain.form.MemberForm;
+import org.swclass.jpashop.service.BusketService;
 import org.swclass.jpashop.service.MemberService;
 
 import javax.validation.Valid;
@@ -34,8 +36,10 @@ public class MemberController {
 
         Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
         Member member = new Member();
+        Busket busket = Busket.createBusket(member);
         member.setName(memberForm.getName());
         member.setAddress(address);
+        member.setBusket(busket);
 
         memberService.join(member);
 
