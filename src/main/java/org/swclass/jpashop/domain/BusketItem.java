@@ -22,7 +22,7 @@ public class BusketItem {
     @JoinColumn(name = "busket_id")
     private Busket busket;
 
-    private int busketPrice;
+    private int busketPrice; //Item의 price : 단가, busketPrice : 총 가격
     private int busketCnt;
 
     public static BusketItem createBusketItem(Item item, int busketPrice, int busketCnt) {

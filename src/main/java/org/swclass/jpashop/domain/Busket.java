@@ -26,11 +26,6 @@ public class Busket {
         this.member = member;
     }
 
-    private void addBusketItems(BusketItem busketItem) {
-        busketItems.add(busketItem);
-        busketItem.setBusket(this);
-    }
-
     protected Busket() {
 
     }
@@ -41,6 +36,11 @@ public class Busket {
         busket.setMember(member);
 
         return busket;
+    }
+
+    public void addBusketItems(BusketItem busketItem) {
+        busketItems.add(busketItem);
+        busketItem.setBusket(this);
     }
 
     public int getTotalBusketPrice() {
