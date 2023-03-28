@@ -18,7 +18,7 @@ public class Busket {
     @OneToOne(mappedBy = "busket", fetch = FetchType.LAZY)
     private Member member;
 
-    @OneToMany(mappedBy = "busket", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "busket", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<BusketItem> busketItems = new ArrayList<>();
 
     //연관관계 메소드
@@ -31,9 +31,8 @@ public class Busket {
     }
 
     //생성 메소드
-    public static Busket createBusket(Member member) {
+    public static Busket createBusket() {
         Busket busket = new Busket();
-        busket.setMember(member);
 
         return busket;
     }

@@ -36,7 +36,7 @@ public class MemberController {
 
         Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
         Member member = new Member();
-        Busket busket = Busket.createBusket(member);
+        Busket busket = Busket.createBusket();
         member.setName(memberForm.getName());
         member.setAddress(address);
         member.setBusket(busket);
